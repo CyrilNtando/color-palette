@@ -13,7 +13,11 @@ export default class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' render={() => <PaletteList palettes={seedPalette} />} />
+        <Route
+          exact
+          path='/'
+          render={routeProps => <PaletteList palettes={seedPalette} {...routeProps} />}
+        />
         <Route
           exact
           path='/palette/:id'
