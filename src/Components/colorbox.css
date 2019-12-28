@@ -7,7 +7,14 @@
   cursor: pointer;
   margin-bottom: -3.8px;
 }
-.copy-button {
+.singleColorPalette .colorBox {
+  height: 50%;
+}
+.colorBox.go-Back {
+  background-color: black;
+}
+.copy-button,
+.backButton {
   width: 100px;
   height: 30px;
   position: absolute;
@@ -22,10 +29,13 @@
   line-height: 30px;
   text-transform: uppercase;
   border: none;
-  opacity: 0;
-  transition: opacity 0.5s;
+  text-decoration: none;
+  color: #fff;
 }
-
+.copy-button {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
 .colorBox:hover .copy-button {
   opacity: 1;
 }
