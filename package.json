@@ -7,13 +7,18 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/styles": "^4.7.1",
     "chroma-js": "^2.1.0",
+    "classnames": "^2.2.6",
     "node-sass": "^4.13.0",
     "rc-slider": "^8.7.1",
     "react": "^16.12.0",
+    "react-color": "^2.17.3",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
+  },
+  "devDependencies": {
+    "react-scripts": "0.8.4"
   },
   "scripts": {
     "start": "react-scripts start",
