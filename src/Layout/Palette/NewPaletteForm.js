@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { ChromePicker } from 'react-color';
 import classNames from 'classnames';
-
+import clsx from 'clsx';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -112,11 +116,47 @@ class NewPaletteForm extends Component {
   handleChange = event => {
     this.setState({ newName: event.target.value });
   };
+  handleSubmit = () => {
+    let newName = 'new test color';
+    const newPalette = {
+      id: newName.toLowerCase().replace(/ /g, '-'),
+      paletteName: newName,
+      colors: this.state.colors
+    };
+    this.props.savePalette(newPalette);
+    this.props.history.push('/');
+  };
   render() {
     const { classes } = this.props;
     const { open, currentColor, colors, newName } = this.state;
     return (
       <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position='fixed'
+          color='default'
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              onClick={this.handleDrawerOpen.bind(this)}
+              edge='start'
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant='h6' noWrap>
+              Persistent drawer
+            </Typography>
+            <Button variant='contained' color='primary' onClick={this.handleSubmit.bind(this)}>
+              Save Palette
+            </Button>
+          </Toolbar>
+        </AppBar>
         <Drawer
           className={classes.drawer}
           variant='persistent'
