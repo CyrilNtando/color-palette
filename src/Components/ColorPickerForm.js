@@ -31,9 +31,6 @@ class ColorPickerForm extends Component {
   updateCurrentColor = color => {
     this.setState({ currentColor: color.hex });
   };
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
 
   handleSubmit() {
     const newColor = {
