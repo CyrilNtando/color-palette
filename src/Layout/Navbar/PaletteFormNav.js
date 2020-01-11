@@ -22,7 +22,8 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -35,18 +36,35 @@ const styles = theme => ({
   menuButton: {
     marginRight: theme.spacing(2)
   },
-  navBtns: {}
+  navBtns: {
+    marginRight: '1rem',
+    '& a': {
+      textDecoration: 'none'
+    }
+  },
+  button: {
+    margin: '0 0.5rem'
+  }
 });
 class PaletteFormNav extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      formShowing: false
+    };
   }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  showForm() {
+    this.setState({ formShowing: true });
+  }
+  hideForm() {
+    this.setState({ formShowing: false });
+  }
   render() {
     const { classes, open, handleSubmit, handleDrawerOpen, palettes } = this.props;
+    const { formShowing } = this.state;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -72,14 +90,28 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <PaletteMetaForm handleSubmit={handleSubmit} palettes={palettes} />
             <Link to='/'>
-              <Button variant='contained' color='secondary'>
+              <Button className={classes.button} variant='contained' color='secondary'>
                 Go Back
               </Button>
             </Link>
+            <Button
+              className={classes.button}
+              variant='contained'
+              color='primary'
+              onClick={this.showForm.bind(this)}
+            >
+              Save
+            </Button>
           </div>
         </AppBar>
+        {formShowing && (
+          <PaletteMetaForm
+            handleSubmit={handleSubmit}
+            palettes={palettes}
+            hideForm={this.hideForm.bind(this)}
+          />
+        )}
       </div>
     );
   }
