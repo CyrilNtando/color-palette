@@ -1,6 +1,15 @@
 import sizes from './Sizes';
-import background from "./bg.svg";
+import background from './bg.svg';
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: 1
+    },
+    '.fade-exit-active': {
+      opacity: 0,
+      transition: 'opacity 500ms ease-out'
+    }
+  },
   root: {
     backgroundColor: '#394bad',
     backgroundImage: `url(${background})`,
@@ -10,8 +19,8 @@ export default {
     justifyContent: 'center',
     overflow: 'scroll'
   },
-  heading:{
-    fontSize: "2rem"
+  heading: {
+    fontSize: '2rem'
   },
   container: {
     width: '50%',
