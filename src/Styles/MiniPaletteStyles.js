@@ -39,7 +39,6 @@ export default {
     margin: '0 auto',
     marginBottom: '-3.5px'
   },
-  delete: {},
   deleteIcon: {
     position: 'absolute',
     right: 0,
