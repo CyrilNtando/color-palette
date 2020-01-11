@@ -21,6 +21,7 @@ export default class App extends Component {
   }
 
   savePalette = newPalette => {
+    console.log(newPalette);
     this.setState(prevState => {
       return { palettes: [...prevState.palettes, newPalette] };
     });
